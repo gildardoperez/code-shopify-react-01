@@ -5,6 +5,8 @@ import './App.css';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
+import Product from './components/product/Product.js';
+
 class App extends Component {
   render() {
     // waiting for the shop data
@@ -25,10 +27,7 @@ class App extends Component {
 
           {productsToDisplay.edges.map((el, i)=> {
             return(
-              <div key={i}>
-                {el.node.title}
-                <img src={el.node.images.edges[0].node.src}/>
-              </div>
+              <Product key={i} title={el.node.title} img={el.node.images.edges[0].node.src}/>
             )
           })}
         </div>
